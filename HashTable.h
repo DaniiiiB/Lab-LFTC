@@ -5,7 +5,7 @@
 class HashTable
 {
 private:
-	Node* table[26];
+	Node* table[23];
 
 public:
 	HashTable();
@@ -15,7 +15,7 @@ public:
 	Post:
 	Input: string
 	Output: integer 
-	Functionality: hashes the value of the input to an integer between 0 and 25
+	Functionality: hashes the value of the input to an integer between 0 and 22
 	*/
 	int hash(std::string token);
 
