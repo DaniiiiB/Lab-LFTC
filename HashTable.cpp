@@ -4,7 +4,7 @@
 
 HashTable::HashTable()
 {
-	for (int i = 0; i < 26; i++)
+	for (int i = 0; i < 23; i++)
 		table[i] = nullptr;
 }
 
@@ -14,7 +14,7 @@ int HashTable::hash(std::string token)
 	int sum = 0;
 	for (char& c : token)
 		sum += c;
-	return sum % 26;
+	return sum % 23;
 }
 
 int HashTable::insert(std::string token)
@@ -38,7 +38,7 @@ int HashTable::insert(std::string token)
 std::string HashTable::print()
 {
 	std::string res = "";
-	for (int i = 0; i < 26; i++)
+	for (int i = 0; i < 23; i++)
 	{
 		res = res + std::to_string(i) + ": ";
 		Node *current = table[i];
