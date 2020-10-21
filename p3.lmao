@@ -1,0 +1,27 @@
+START
+
+STRUCTURE za_numeros
+{za_number size; za_number lst[100];}
+
+za_number n,sum,counter;
+za_numeros numeros;
+
+FILL n;
+numeros-size GET n;
+sum GET 0;
+counter GET 0;
+
+FOR (counter;counter LT n;counter GET counter ADDO 1) MAKE_MAGIC 
+ {FILL numeros-lst[counter];}
+
+counter GET 0;
+FOR (counter;counter LT n;counter GET counter ADDO 1) MAKE_MAGIC 
+ {sum GET sum ADDO numeros-lst[counter];}
+
+SHOW_ME "za sum is ";
+SHOW_ME sum;
+
+GIVE_BACK 0; 
+ 
+FINISH
+  

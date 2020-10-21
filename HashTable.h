@@ -15,7 +15,7 @@ public:
 	Post:
 	Input: string
 	Output: integer 
-	Functionality: hashes the value of the input to an integer between 0 and 22
+	Functionality: hashes the value of the input to an integer between 0 and 25
 	*/
 	int hash(std::string token);
 
@@ -33,6 +33,9 @@ public:
 	Output: string
 	Functionality: turns the hash table into a readable form
 	*/
+
+	int search(std::string token);
+
 	std::string print();
 
 

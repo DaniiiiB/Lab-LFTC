@@ -1,0 +1,21 @@
+START
+
+za_number n,counter; 
+boolean it_is,found; 
+
+FILLL n;
+counter GET 02; 
+found GET FALSE; 
+
+WHILE (found EQ FALSE) MAKE_MAGIC 
+ {IF_YES (counter*counter GTOREQ n) THEN 
+  {IF_YES (counter*counter EQ n) THEN {it_is GET TRUE;} IF_NO {it_is GET FALSE;} found GET TRUE;}
+  counter GET counter ADDO 1;
+ }
+
+IF_YES (it_is EQ TRUE) THEN {SHOW_ME "It is";}
+IF_NO {SHOW_ME "It is not"a";} 
+ 
+GIVE_BACK 0;
+
+FINISH

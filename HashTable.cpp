@@ -35,6 +35,19 @@ int HashTable::insert(std::string token)
 	return hash_value;
 }
 
+int HashTable::search(std::string token)
+{
+	int hash_value = hash(token);
+	Node *current = table[hash_value];
+	if (current == nullptr)
+		return -1;
+	while (current != nullptr) {
+		if (current->data.compare(token) == 0) return hash_value;
+		current = current->next;
+	}
+	return -1;
+}
+
 std::string HashTable::print()
 {
 	std::string res = "";

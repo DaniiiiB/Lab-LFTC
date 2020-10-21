@@ -1,0 +1,22 @@
+START
+
+za_number a,b,c,min;
+
+FILL a;
+FILL b;
+FILL c;
+
+IF_YES (a LT b) THEN
+ {IF_YES (a LT c) THEN {min GET a;}
+  IF_NO {min GET c;}
+ }
+IF_NO
+ {IF_YES (b LT c) THEN {min GET b;}
+  IF_NO {min GET c}
+ }
+
+SHOW_ME max;
+
+GIVE_BACK 0;
+
+FINISH

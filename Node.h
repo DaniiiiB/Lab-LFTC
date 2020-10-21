@@ -3,6 +3,6 @@
 #include <string>
 
 struct Node {
-	private std::string data;
-	private struct Node *next;
+	std::string data;
+	struct Node *next;
 };
