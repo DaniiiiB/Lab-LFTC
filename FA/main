@@ -1,0 +1,25 @@
+#include "stdafx.h"
+#include <iostream>
+#include <map>
+#include <process.h>
+#include <fstream>
+#include <vector>
+#include "FiniteAutomata.h"
+
+int main()
+{
+	FiniteAutomata fa = FiniteAutomata("automataex.txt");
+	//std::cout << fa.toString() << std::endl;
+	int opt;
+	std::string seq;
+	while (true) {
+		seq = "";
+		std::cout<< fa.menu();
+		std::cin >> opt;
+		if (opt == 0) break;
+		if (opt == 6) std::cin >> seq;
+		std::cout << fa.menuOption(opt,seq) << std::endl;
+	}
+
+	system("pause");
+}
