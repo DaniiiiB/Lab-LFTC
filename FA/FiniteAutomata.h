@@ -23,6 +23,7 @@ public:
 	std::string menu();
 	std::string menuOption(int opt, std::string seq="");
 	bool verifySequence(std::string seq);
+	bool isDFA();
 	~FiniteAutomata();
 };
 
