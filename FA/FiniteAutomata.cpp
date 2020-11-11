@@ -143,15 +143,31 @@ std::string FiniteAutomata::menuOption(int opt, std::string seq)
 
 bool FiniteAutomata::verifySequence(std::string seq)
 {
-	std::string currentState = startState;
-	for (char& c : seq) {
-		if (transitions[currentState].find(std::string(1, c)) == transitions[currentState].end()) {
-			return false;
+	if(isDFA()){
+		std::string currentState = startState;
+		for (char& c : seq) {
+			if (transitions[currentState].find(std::string(1, c)) == transitions[currentState].end()) {
+				return false;
+			}
+			currentState = transitions[currentState][std::string(1, c)][0];
 		}
-		currentState = transitions[currentState][std::string(1, c)][0];
+		if (std::find(finalStates.begin(), finalStates.end(), currentState) != finalStates.end()) return true;
+		return false;
 	}
-	if (std::find(finalStates.begin(), finalStates.end(), currentState) != finalStates.end()) return true;
 	return false;
+}
+
+bool FiniteAutomata::isDFA(){
+	for (std::map<std::string, std::map<std::string, std::vector<std::string>>>::iterator iter = transitions.begin();
+			iter != transitions.end(); ++iter)
+		{
+			for (std::map<std::string, std::vector<std::string>>::iterator iterVal = iter->second.begin();
+				iterVal != iter->second.end(); ++iterVal)
+			{
+				if(iterVal->second.size() != 1) return false;
+			}
+		}
+	return true;
 }
 
 FiniteAutomata::~FiniteAutomata()
