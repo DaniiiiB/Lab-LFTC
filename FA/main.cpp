@@ -196,7 +196,7 @@ bool is_constant(std::string token) {
 	Checks if a character is a separator
 */
 bool is_separator(char c) {
-	return (c == '[' || c == ']' || c == '{' || c == '}' || c == ';' || c == ',' || c == '-');
+	return (c == '[' || c == ']' || c == '{' || c == '}' || c == ';' || c == ',' || c == '-' || c == '(' || c == ')');
 }
 
 /*
@@ -248,10 +248,9 @@ bool parse_file(std::string filename, HashTable &st,
 
 			if (in_string) current_string += c;
 			else {
-				if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-					|| (c >= '0' && c <= '9') || c == '_')
+				if (!(c == ' ' || is_separator(c) || is_operator(c)))
 					current_string += c;
-				if (c == ' ' || is_separator(c) || is_operator(c)) {
+				else {
 					if (is_separator(c) || is_operator(c))
 						pif.push_back(std::make_pair(std::string(1, c), tokens[std::string(1, c)]));
 					if (tokens.count(current_string))
